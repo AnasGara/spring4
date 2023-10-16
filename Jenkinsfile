@@ -10,10 +10,10 @@ pipeline {
       }
     }
     
-    stage("Clone Angular repo and Install Dependencies") {
+    stage("Clone and Install Angular app") {
       steps {
-        sh "https://github.com/AnasGara/Jen4"
-        dir("angular-app") {
+        sh "git clone https://github.com/AnasGara/Jen4"
+        dir("Jen4") {
           sh "npm install"
         }
       }
@@ -21,24 +21,32 @@ pipeline {
 
     stage("Build Angular App") {
       steps {
-        dir("angular-app") {
+        dir("Jen4") {
           sh "ng build --prod"
+        }
+      }
+    }
+
+    stage("Clone and Build Spring Boot app") {
+      steps {
+        sh "git clone https://github.com/AnasGara/spring4"
+        dir("spring4") {
+          sh "mvn clean install"
         }
       }
     }
 
     stage("Generate Backend Image") {
       steps {
-        dir("ex2") {
-          sh "mvn clean install"
-          sh "docker build -t ex2 ."
+        dir("spring4") {
+          sh "docker build -t spring4 ."
         }
       }
     }
 
     stage("Run Docker Compose") {
       steps {
-        dir("ex2") {
+        dir("spring4") {
           sh "docker-compose up -d"
         }
       }
