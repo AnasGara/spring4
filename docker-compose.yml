@@ -21,9 +21,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=system
     volumes:
-      - mysql:/var/lib/mysql
-      - mysql_config:/etc/mysql
-
+      - mysql_data:/var/lib/mysql
+      
     networks:
       - back-tier
 
@@ -32,8 +31,8 @@ services:
     ports:
       - 3000:3000
 volumes:
-  mysql:
-  mysql_config:
+  mysql_data:
+  
     networks:
       - front-tier
       - back-tier
