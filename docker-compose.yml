@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-
   back:
     image: spring4
     ports:
@@ -27,7 +26,7 @@ services:
       - back-tier
 
   front:
-    image: Jen4
+    image: jen4
     ports:
       - 3000:3000
     networks:
