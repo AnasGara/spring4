@@ -48,7 +48,7 @@ pipeline {
     stage("Run Docker Compose") {
       steps {
         dir("spring4") {
-          sh "docker-compose up -d"
+          sh "docker compose up -d"
         }
       }
     }
