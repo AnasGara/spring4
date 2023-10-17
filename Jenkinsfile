@@ -16,7 +16,6 @@ pipeline {
         sh "git clone https://github.com/AnasGara/Jen4"
         dir("Jen4") {
           sh "npm install"
-          sh "npm install -g @angular/cli"
         }
       }
     }
