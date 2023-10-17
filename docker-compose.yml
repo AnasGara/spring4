@@ -27,7 +27,7 @@ services:
       - back-tier
 
   front:
-    image: Jen4
+    image: jen4
     ports:
       - 3000:3000
     networks:
