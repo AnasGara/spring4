@@ -13,8 +13,8 @@ pipeline {
     
     stage("Clone and Install Angular app") {
       steps {
-        sh "git clone https://github.com/AnasGara/jen4"
-        dir("jen4") {
+        sh "git clone https://github.com/AnasGara/Jen4"
+        dir("Jen4") {
           sh "npm install"
         }
       }
@@ -22,8 +22,8 @@ pipeline {
 
     stage("Build Angular App") {
       steps {
-        dir("jen4") {
-          sh "ng build --configuration=production"
+        dir("Jen4") {
+          sh "docker build Jen4 ."
         }
       }
     }
