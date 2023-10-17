@@ -20,8 +20,6 @@ services:
       - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=system
-    volumes:
-      - mysql_data:/var/lib/mysql
       
     networks:
       - back-tier
@@ -30,9 +28,7 @@ services:
     image: jen4
     ports:
       - 3000:3000
-volumes:
-  mysql_data:
-  
+
     networks:
       - front-tier
       - back-tier
