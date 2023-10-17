@@ -23,7 +23,7 @@ pipeline {
     stage("Build Angular App") {
       steps {
         dir("Jen4") {
-          sh "docker build -t Jen4 ."
+          sh "docker build -t jen4 ."
         }
       }
     }
