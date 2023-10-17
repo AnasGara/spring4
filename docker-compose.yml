@@ -13,12 +13,16 @@ services:
       - front-tier
       - back-tier
 
+
   mysqldb:
     image: mysql:5.7
     ports:
       - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=system
+    volumes:
+      - mysql:/var/lib/mysql
+      - mysql_config:/etc/mysql
 
     networks:
       - back-tier
@@ -27,10 +31,12 @@ services:
     image: Jen4
     ports:
       - 3000:3000
+volumes:
+  mysql:
+  mysql_config:
     networks:
       - front-tier
       - back-tier
-
 
 networks:
   front-tier:
